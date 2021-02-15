@@ -8,33 +8,47 @@
 <div id="app">
     <button @click="handleClick">点我</button>
     <br>
-    <input type="text" v-model="num">
+    <input type="text" v-model="num"><!-- v-model双向绑定 -->
     <button @click="num++">+</button>
     <h1>
         <!--指令作用在标签上-->
         <span v-text="name"></span>非常帅，Hello World！<br>
         {{num}}证明了view的变换影响model
     </h1>
+    <span v-text="name"></span><br>
+    <span v-html="name"></span>
+    <hr>
+    <h1>请选择要学习的语言：</h1>
+    <input type="checkbox" v-model="lessons" value="Java"/>Java <br>
+    <input type="checkbox" v-model="lessons" value="Golang"/>Golang <br>
+    <input type="checkbox" v-model="lessons" value="PHP"/>PHP <br>
+    <input type="checkbox" v-model="lessons" value="C/C++"/>C/C++ <br>
+    <h1>
+        您已经选择的课程：{{lessons.join(",")}}
+    </h1>
 </div>
 <script src="node_modules/vue/dist/vue.js"></script>
 <script>
     const app = new Vue({ // Vue只能作用于el所在的标签
-        el: "#app", // element 标签元素，vue作用的标签
-        data: {
-            name: "",
-            num: 1, //
-        },
-        methods: {
-            handleClick() {
-                console.log(this);
-                console.log("Hello World!")
+            el: "#app", // element 标签元素，vue作用的标签
+            data: {
+                name: "",
+                num: 1,
+                lessons: []
+            },
+            methods: {
+                handleClick() {
+                    console.log(this);
+                    console.log("Hello World!")
+                }
             }
-        },
-        created() { // 页面加载就执行 created
-            // 向后台发ajax的请求，实现data数据的初始化
-            this.name = "franky";
-        }
-    });
+            ,
+            created() { // 页面加载就执行 created
+                // 向后台发ajax的请求，实现data数据的初始化
+                this.name = "<font color='#8a2be2'>franky</font>";
+            }
+        })
+    ;
 </script>
 </body>
 </html>
