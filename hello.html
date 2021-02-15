@@ -33,8 +33,21 @@
     <div style="width: 100px;height: 100px;background-color: antiquewhite" @click="print('div onClick')">
         v-on div
         <button @click.stop="print('button onClick')">点击试试</button>
+        <a href="http://www.baidu.com" @click.prevent="print('Baidu')">Baidu</a>
     </div>
-
+    <hr>
+    <!-- v-for -->
+    <ul>
+        <li v-for="(user,index) in users">
+            {{index +" "+user.name+","+user.age+","+user.gender}}
+        </li>
+    </ul>
+    <!--v-for 遍历对象,得到对象的属性-->
+    <ul>
+        <li v-for="(value,key) in users[0]">
+            {{key+":"+value}}<!-- key 是属性的名，value 是属性的值-->
+        </li>
+    </ul>
 </div>
 <script src="node_modules/vue/dist/vue.js"></script>
 <script>
@@ -43,7 +56,14 @@
             data: {
                 name: "",
                 num: 1,
-                lessons: []
+                lessons: [],
+                users: [
+                    {name: '柳岩', gender: '女', age: 21},
+                    {name: '阿凡提', gender: '男', age: 18},
+                    {name: '范冰冰', gender: '女', age: 24},
+                    {name: '刘亦菲', gender: '女', age: 18},
+                    {name: '古力娜扎', gender: '女', age: 25}
+                ]
             },
             methods: {
                 handleClick() {
