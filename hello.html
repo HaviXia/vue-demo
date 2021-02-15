@@ -38,7 +38,7 @@
     <hr>
     <!-- v-for -->
     <ul>
-        <li v-for="(user,index) in users">
+        <li v-for="(user,index) in users" :key="user.name"> <!-- key:唯一，不需要重新渲染 -->
             {{index +" "+user.name+","+user.age+","+user.gender}}
         </li>
     </ul>
