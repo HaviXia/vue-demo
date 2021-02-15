@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="num">
+    <button @click="num++">+</button>
+    <h1>
+        {{name}}非常帅，Hello World！<br>
+        {{num}}证明了view的变换影响model
+    </h1>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    const app = new Vue({ // Vue只能作用于el所在的标签
+        el: "#app", // element 标签元素，vue作用的标签
+        data: {
+            name: "franky",
+            num: 1, //
+        }
+    });
+</script>
+</body>
+</html>
