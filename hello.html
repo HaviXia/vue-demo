@@ -6,6 +6,7 @@
 </head>
 <body>
 <div id="app">
+    <!--VUE的基本使用-->
     <button @click="handleClick">点我</button>
     <br>
     <input type="text" v-model="num"><!-- v-model双向绑定 -->
@@ -18,6 +19,7 @@
     <span v-text="name"></span><br>
     <span v-html="name"></span>
     <hr>
+    <!--v-model-->
     <h1>请选择要学习的语言：</h1>
     <input type="checkbox" v-model="lessons" value="Java"/>Java <br>
     <input type="checkbox" v-model="lessons" value="Golang"/>Golang <br>
@@ -26,6 +28,13 @@
     <h1>
         您已经选择的课程：{{lessons.join(",")}}
     </h1>
+    <hr>
+    <!--v-on：事件冒泡、事件委托-->
+    <div style="width: 100px;height: 100px;background-color: antiquewhite" @click="print('div onClick')">
+        v-on div
+        <button @click.stop="print('button onClick')">点击试试</button>
+    </div>
+
 </div>
 <script src="node_modules/vue/dist/vue.js"></script>
 <script>
@@ -40,6 +49,9 @@
                 handleClick() {
                     console.log(this);
                     console.log("Hello World!")
+                },
+                print(msg) {
+                    console.log(msg)
                 }
             }
             ,
