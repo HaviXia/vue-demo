@@ -6,10 +6,13 @@
 </head>
 <body>
 <div id="app">
+    <button @click="handleClick">点我</button>
+    <br>
     <input type="text" v-model="num">
     <button @click="num++">+</button>
     <h1>
-        {{name}}非常帅，Hello World！<br>
+        <!--指令作用在标签上-->
+        <span v-text="name"></span>非常帅，Hello World！<br>
         {{num}}证明了view的变换影响model
     </h1>
 </div>
@@ -18,8 +21,18 @@
     const app = new Vue({ // Vue只能作用于el所在的标签
         el: "#app", // element 标签元素，vue作用的标签
         data: {
-            name: "franky",
+            name: "",
             num: 1, //
+        },
+        methods: {
+            handleClick() {
+                console.log(this);
+                console.log("Hello World!")
+            }
+        },
+        created() { // 页面加载就执行 created
+            // 向后台发ajax的请求，实现data数据的初始化
+            this.name = "franky";
         }
     });
 </script>
