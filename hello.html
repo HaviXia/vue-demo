@@ -54,6 +54,9 @@
     <h1 v-if="show">
         你好
     </h1>
+    <h1 v-show="show">
+        你非常好，已经记录
+    </h1>
     <ul>
         <li v-for="i in 5">
             <span v-if="i%2 === 0">偶数{{i}}</span><!--v-if和v-else不能加其他标签-->
