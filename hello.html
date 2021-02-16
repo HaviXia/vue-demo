@@ -48,6 +48,18 @@
             {{key+":"+value}}<!-- key 是属性的名，value 是属性的值-->
         </li>
     </ul>
+    <!-- v-if -->
+    <button @click="show = !show">点击切换</button>
+    <br/>
+    <h1 v-if="show">
+        你好
+    </h1>
+    <ul>
+        <li v-for="i in 5">
+            <span v-if="i%2 === 0">偶数{{i}}</span><!--v-if和v-else不能加其他标签-->
+            <span v-else>奇数{{i}}</span><br>
+        </li>
+    </ul>
 </div>
 <script src="node_modules/vue/dist/vue.js"></script>
 <script>
@@ -63,13 +75,15 @@
                     {name: '范冰冰', gender: '女', age: 24},
                     {name: '刘亦菲', gender: '女', age: 18},
                     {name: '古力娜扎', gender: '女', age: 25}
-                ]
+                ],
+                show: true,
             },
             methods: {
                 handleClick() {
                     console.log(this);
                     console.log("Hello World!")
-                },
+                }
+                ,
                 print(msg) {
                     console.log(msg)
                 }
