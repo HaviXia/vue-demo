@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+</head>
+<body>
+<div id="app">
+    <counter></counter>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // 定义全局组件
+    /*
+    * 全局组件的复用时，count不会之间影响，属性不共享
+    * */
+    Vue.component("counter", {
+        template: "<button @click='count++'>点击，并且记录,现已记录{{count}}次</button>",
+        data() {
+            return {
+                count: 0,
+            }
+        }
+    });
+    // 局部组件
+    const counter = {
+        template: "<button @click='count++'>点击，并且记录,现已记录{{count}}次</button>",
+        data() {
+            return {
+                count: 0,
+            }
+        }
+    };
+    const app = new Vue({
+        el: "#app",
+        data: {},
+        components: {
+            counter,
+        }
+    });
+</script>
+</body>
+</html>
